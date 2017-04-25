@@ -1,4 +1,4 @@
-package com.example.blue.gasshop;
+package com.example.blue.gasshop.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.blue.gasshop.Activity.DonHangActivity;
+import com.example.blue.gasshop.DonHangFirebase;
+import com.example.blue.gasshop.R;
+
 import java.util.ArrayList;
 
 /**
@@ -15,17 +19,14 @@ import java.util.ArrayList;
  */
 
 public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHolder> {
-    private ArrayList<DonHang> donHangArrayList;
+    private ArrayList<DonHangFirebase> donHangArrayList;
     private Context context;
 
-    public DonHangAdapter(Context context) {
+
+    public DonHangAdapter(ArrayList<DonHangFirebase> donHangArrayList, Context context) {
+        this.donHangArrayList = donHangArrayList;
         this.context = context;
     }
-    //
-//    public DonHangAdapter(ArrayList<DonHang> donHangArrayList, Context context) {
-//        this.donHangArrayList = donHangArrayList;
-//        this.context = context;
-//    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,15 +37,16 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        holder.textName.setText(donHangArrayList.get(position).getName());
-//        holder.textSDT.setText(donHangArrayList.get(position).getSdt());
-//        holder.textDiaChi.setText(donHangArrayList.get(position).getDiaChi());
-//        holder.textSanPham.setText(donHangArrayList.get(position).getSanPham());
+        holder.textName.setText(donHangArrayList.get(position).ten);
+        holder.textSDT.setText(donHangArrayList.get(position).sdt);
+        holder.textDiaChi.setText(donHangArrayList.get(position).diachi);
+        holder.textSanPham.setText(donHangArrayList.get(position).sanpham);
+        holder.textGia.setText(donHangArrayList.get(position).tongtien + "");
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return donHangArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -54,9 +56,11 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         TextView textSanPham;
         TextView buttonXong;
         TextView buttonChiTiet;
+        TextView textGia;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            textGia = (TextView) itemView.findViewById(R.id.text_gia);
             textName = (TextView) itemView.findViewById(R.id.text_name);
             textSDT = (TextView) itemView.findViewById(R.id.text_sdt);
             textDiaChi = (TextView) itemView.findViewById(R.id.text_diachi);
@@ -66,16 +70,18 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             buttonXong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    donHangArrayList.remove(getAdapterPosition());
+                    donHangArrayList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                 }
             });
-        buttonChiTiet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, DonHangActivity.class));
-            }
-        });
+            buttonChiTiet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(context, DonHangActivity.class);
+                    intent.putExtra("donhang",donHangArrayList.get(getAdapterPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }

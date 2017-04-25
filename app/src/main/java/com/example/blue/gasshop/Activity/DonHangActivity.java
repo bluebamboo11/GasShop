@@ -1,4 +1,4 @@
-package com.example.blue.gasshop;
+package com.example.blue.gasshop.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.blue.gasshop.R;
+import com.example.blue.gasshop.Adapter.SanPhamAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

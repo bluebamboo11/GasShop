@@ -11,41 +11,111 @@
         android:layout_margin="8dp">
 
         <LinearLayout
-            android:paddingTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="10dp">
-
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ten: Tung" />
-
-            <TextView
-                android:id="@+id/text_sdt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SDT: 01692537685" />
-
-            <TextView
-                android:id="@+id/text_diachi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dia Chi: Ha noi, ha dong, khu do thi van khe" />
-
-            <TextView
-
-                android:id="@+id/text_ds_sanPham"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="San Pham: binh ga, bep gas" />
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp">
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ten: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tung" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SDT: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_sdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01269537685" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dia Chi: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_diachi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ha noi, ha dong, khu do thi van khe" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="San Pham: "
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:id="@+id/text_ds_sanPham"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="binh ga, bep gas" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tien: "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_gia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="300.000 VND"
+                    android:textColor="@android:color/holo_red_dark" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="right"
                 android:orientation="horizontal">
 

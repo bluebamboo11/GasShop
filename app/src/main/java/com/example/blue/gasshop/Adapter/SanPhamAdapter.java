@@ -1,4 +1,4 @@
-package com.example.blue.gasshop;
+package com.example.blue.gasshop.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.example.blue.gasshop.R;
+import com.example.blue.gasshop.SanPham;
 
 import java.util.ArrayList;
 

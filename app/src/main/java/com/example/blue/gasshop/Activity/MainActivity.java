@@ -1,4 +1,4 @@
-package com.example.blue.gasshop;
+package com.example.blue.gasshop.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,9 +12,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.blue.gasshop.Adapter.DonHangAdapter;
+import com.example.blue.gasshop.DonHangFirebase;
+import com.example.blue.gasshop.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private RecyclerView recyclerView;
+    private RecyclerView recyclerView;
+    private DonHangFirebase donHangFirebase;
+    DatabaseReference databaseReferenceDonHang;
+    ChildEventListener childEventListenerDonHang;
+    DonHangAdapter donHangAdapter;
+    private DatabaseReference databaseReference;
+    private ArrayList<DonHangFirebase> donHangFirebaseArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +39,7 @@ private RecyclerView recyclerView;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,17 +90,61 @@ private RecyclerView recyclerView;
         int id = item.getItemId();
 
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void initRecycleView(){
-        recyclerView=(RecyclerView) findViewById(R.id.recyclerView_DonHang);
+
+    private void initRecycleView() {
+        databaseReferenceDonHang = databaseReference.child("HaNoi/HaDong/LaKhe");
+        donHangFirebaseArrayList = new ArrayList<>();
+        donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
+        childEventListenerDonHang = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                DonHangFirebase donHangFirebase = dataSnapshot.getValue(DonHangFirebase.class);
+                databaseReferenceDonHang.child(dataSnapshot.getKey()).removeValue();
+                donHangFirebaseArrayList.add(donHangFirebase);
+                donHangAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_DonHang);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        DonHangAdapter donHangAdapter=new DonHangAdapter(this);
         recyclerView.setAdapter(donHangAdapter);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        databaseReferenceDonHang.addChildEventListener(childEventListenerDonHang);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        databaseReferenceDonHang.removeEventListener(childEventListenerDonHang);
     }
 }
