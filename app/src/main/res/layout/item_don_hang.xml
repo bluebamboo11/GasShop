@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ten: Tung" />
+
+            <TextView
+                android:id="@+id/text_sdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SDT: 01692537685" />
+
+            <TextView
+                android:id="@+id/text_diachi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dia Chi: Ha noi, ha dong, khu do thi van khe" />
+
+            <TextView
+
+                android:id="@+id/text_ds_sanPham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="San Pham: binh ga, bep gas" />
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+
+
+                    android:id="@+id/buton_xong"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/white"
+                    android:text="Xong"
+                    android:textColor="#20e223" />
+
+                <TextView
+                    android:id="@+id/buton_chitiet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@android:color/white"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:text="Chi tiet"
+                    android:textColor="#20e223" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
