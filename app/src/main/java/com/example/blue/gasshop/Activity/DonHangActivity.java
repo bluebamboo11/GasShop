@@ -6,43 +6,64 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.example.blue.gasshop.R;
 import com.example.blue.gasshop.Adapter.SanPhamAdapter;
+import com.example.blue.gasshop.DonHangFirebase;
+import com.example.blue.gasshop.R;
+import com.example.blue.gasshop.SanPhamFirebase;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class DonHangActivity extends  AppCompatActivity implements OnMapReadyCallback {
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+public class DonHangActivity extends AppCompatActivity implements OnMapReadyCallback {
     static final LatLng HO_HOAN_KIEM = new LatLng(21.028933, 105.852107);
-    static final LatLng LANG_CHU_TICH_HCM = new LatLng(21.036779, 105.834697);
-    private GoogleMap mMap;
+    private LatLng diachi;
+    private DatabaseReference databaseReference;
+    private ArrayList<SanPhamFirebase> sanPhamFirebaseArrayList;
+    private SanPhamAdapter sanPhamAdapter;
+    private ListView listView;
+
+    public DonHangActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_hang);
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        initData();
         mapFragment.getMapAsync(this);
-        ListView listView=(ListView) findViewById(R.id.listView_sanPham);
-        SanPhamAdapter sanPhamAdapter=new SanPhamAdapter(this);
+        listView = (ListView) findViewById(R.id.listView_sanPham);
+        sanPhamFirebaseArrayList = new ArrayList<>();
+        sanPhamAdapter = new SanPhamAdapter(sanPhamFirebaseArrayList, this);
         listView.setAdapter(sanPhamAdapter);
         setListViewHeightBasedOnChildren(listView);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.addMarker(new MarkerOptions().position(HO_HOAN_KIEM).title("Marker"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(HO_HOAN_KIEM,15));
+        googleMap.addMarker(new MarkerOptions().position(diachi).title("Khach Hang"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(diachi, 15));
         googleMap.getUiSettings().setZoomControlsEnabled(true);
     }
+
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
-            // pre-condition
+
             return;
         }
 
@@ -58,4 +79,44 @@ public class DonHangActivity extends  AppCompatActivity implements OnMapReadyCal
         listView.setLayoutParams(params);
         listView.requestLayout();
     }
+
+    public void initData() {
+        DonHangFirebase donHangFirebase = (DonHangFirebase) getIntent().getSerializableExtra("donhang");
+        TextView textTen = (TextView) findViewById(R.id.text_name);
+        TextView textSDT = (TextView) findViewById(R.id.text_sdt);
+        TextView textDiaChi = (TextView) findViewById(R.id.text_diachi);
+        TextView textTien = (TextView) findViewById(R.id.text_gia);
+        textTen.setText(donHangFirebase.ten);
+        textSDT.setText(donHangFirebase.sdt);
+        textDiaChi.setText(donHangFirebase.diachi);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        textTien.setText(decimalFormat.format(donHangFirebase.tongtien));
+        diachi = new LatLng(donHangFirebase.x, donHangFirebase.y);
+        String[] sanPhams = donHangFirebase.idSanPham.split(",");
+        for (String s : sanPhams) {
+            loadData(s);
+        }
+    }
+
+    private void loadData(String s) {
+        final String[] sanpham = s.split(":");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("SanPham").child("bepgas").child(sanpham[0]).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                SanPhamFirebase sanPhamFirebase = dataSnapshot.getValue(SanPhamFirebase.class);
+                sanPhamFirebase.soluong = sanpham[1];
+                sanPhamFirebaseArrayList.add(sanPhamFirebase);
+                sanPhamAdapter.notifyDataSetChanged();
+                setListViewHeightBasedOnChildren(listView);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }

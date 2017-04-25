@@ -7,9 +7,9 @@ package com.example.blue.gasshop;
 public class SanPham {
     private String name;
     private String thongso;
-    private int url;
+    private String url;
 
-    public SanPham(String name, String thongso, int url) {
+    public SanPham(String name, String thongso, String url) {
         this.name = name;
         this.thongso = thongso;
         this.url = url;
@@ -17,6 +17,14 @@ public class SanPham {
 
     public String getName() {
         return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void setName(String name) {
@@ -31,11 +39,5 @@ public class SanPham {
         this.thongso = thongso;
     }
 
-    public int getUrl() {
-        return url;
-    }
 
-    public void setUrl(int url) {
-        this.url = url;
-    }
 }

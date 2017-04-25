@@ -12,8 +12,9 @@ public class DonHangFirebase  implements Serializable{
     public String sanpham;
     public String diachi;
     public String sdt;
-    public String x;
-    public String y;
+    public String idSanPham;
+    public double x;
+    public double y;
     public DonHangFirebase() {
     }
 

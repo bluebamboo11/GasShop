@@ -12,6 +12,7 @@ import com.example.blue.gasshop.Activity.DonHangActivity;
 import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -41,7 +42,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         holder.textSDT.setText(donHangArrayList.get(position).sdt);
         holder.textDiaChi.setText(donHangArrayList.get(position).diachi);
         holder.textSanPham.setText(donHangArrayList.get(position).sanpham);
-        holder.textGia.setText(donHangArrayList.get(position).tongtien + "");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        holder.textGia.setText(decimalFormat.format(donHangArrayList.get(position).tongtien )+ "");
     }
 
     @Override
@@ -85,4 +87,6 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         }
 
     }
+
+
 }

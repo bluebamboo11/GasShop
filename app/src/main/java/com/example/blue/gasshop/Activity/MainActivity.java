@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        donHangFirebaseArrayList = new ArrayList<>();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
 
     private void initRecycleView() {
         databaseReferenceDonHang = databaseReference.child("HaNoi/HaDong/LaKhe");
-        donHangFirebaseArrayList = new ArrayList<>();
+
         donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
         childEventListenerDonHang = new ChildEventListener() {
             @Override
@@ -146,5 +146,22 @@ public class MainActivity extends AppCompatActivity
     protected void onStop() {
         super.onStop();
         databaseReferenceDonHang.removeEventListener(childEventListenerDonHang);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("list", donHangFirebaseArrayList);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+             ArrayList<DonHangFirebase> donHangFirebases= (ArrayList<DonHangFirebase>) savedInstanceState.getSerializable("list");
+        if(donHangFirebases!=null){
+            donHangFirebaseArrayList=donHangFirebases;
+            donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
+            recyclerView.setAdapter(donHangAdapter);
+        }
     }
 }
