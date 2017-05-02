@@ -5,5 +5,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="STT">STT</string>
+    <string name="Tenhang">Tên Hàng</string>
+    <string name="Ketqua">Kết quả</string>
+    <string name="Thoigian">Thời gian</string>
+    <string name="Chitiet"> Chi tiết</string>
     <string name="google_maps_key">AIzaSyDOoNmssD1HddkPDjew-N9t2qxEdNrrx98</string>
+    <string name="title_activity_thongke">ThongkeActivity</string>
+    <string name="Tenkh"> Tên khách hàng</string>
+    <string name="SDT">0974852699</string>
+    <string name="Tien">1.000.000</string>
 </resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.blue.gasshop.Activity.ThongkeActivity"
+    tools:showIn="@layout/activity_thongke">
+
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp">
+
+        <ListView
+            android:id="@+id/lvThongke"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+    <!--<TableLayout-->
+    <!--android:layout_width="368dp"-->
+    <!--android:layout_height="495dp"-->
+    <!--android:background="@drawable/duongvien_goctron"-->
+    <!--tools:layout_editor_absoluteX="8dp"-->
+    <!--tools:layout_editor_absoluteY="1dp">-->
+
+    <!--<TableRow-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/cell_shape"-->
+
+    <!--android:padding="10dp">-->
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/STT"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@drawable/cell_shape"-->
+    <!--android:gravity="center"-->
+    <!--android:text="STT" />-->
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/Mahang"-->
+    <!--android:layout_weight="2"-->
+    <!--android:background="@drawable/cell_shape"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Mã Hàng"-->
+
+    <!--/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/thoigian"-->
+    <!--android:layout_weight="2"-->
+    <!--android:background="@drawable/cell_shape"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Thời Gian" />-->
+
+    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/Chitiet"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/cell_shape"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:text="Chi tiết" />&ndash;&gt;-->
+
+
+    <!--</TableRow>-->
+    <!--</TableLayout>-->
+
+
+</android.support.constraint.ConstraintLayout>

@@ -14,7 +14,8 @@ public class SanPhamFirebase implements Serializable {
     public String thongtin;
     public String thongso;
     public String baohanh;
-public String soluong;
+    public String soluong;
+
     public SanPhamFirebase() {
     }
 

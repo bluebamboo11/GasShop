@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.blue.gasshop">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +14,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAdLg4gFHyrcMTqMxN6NY0nx8Y3wJooVcA" />
+
         <activity
             android:name=".Activity.MainActivity"
             android:label="@string/app_name"
@@ -23,7 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.DonHangActivity"></activity>
+        <activity android:name=".Activity.DonHangActivity" />
+        <activity
+            android:name=".Activity.ThongkeActivity"
+            android:label="@string/title_activity_thongke"
+
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

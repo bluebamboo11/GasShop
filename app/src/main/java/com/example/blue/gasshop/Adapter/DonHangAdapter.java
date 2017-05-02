@@ -13,7 +13,9 @@ import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by blue on 24/04/2017.
@@ -43,7 +45,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         holder.textDiaChi.setText(donHangArrayList.get(position).diachi);
         holder.textSanPham.setText(donHangArrayList.get(position).sanpham);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.textGia.setText(decimalFormat.format(donHangArrayList.get(position).tongtien )+ "");
+        holder.textGia.setText(decimalFormat.format(donHangArrayList.get(position).tongtien) + "");
+        //Nang
+        holder.textKQ.setText("" + donHangArrayList.get(position).KQ);
+
+        holder.textNgaymua.setText("" + donHangArrayList.get(position).ngaymua);
+
     }
 
     @Override
@@ -59,6 +66,9 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         TextView buttonXong;
         TextView buttonChiTiet;
         TextView textGia;
+        //Nang
+        TextView textKQ;
+        TextView textNgaymua;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,11 +77,18 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             textSDT = (TextView) itemView.findViewById(R.id.text_sdt);
             textDiaChi = (TextView) itemView.findViewById(R.id.text_diachi);
             textSanPham = (TextView) itemView.findViewById(R.id.text_ds_sanPham);
+            textKQ = (TextView) itemView.findViewById(R.id.text_KQ);
             buttonXong = (TextView) itemView.findViewById(R.id.buton_xong);
             buttonChiTiet = (TextView) itemView.findViewById(R.id.buton_chitiet);
+            textNgaymua = (TextView) itemView.findViewById(R.id.txtThoigian);
             buttonXong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    Date today = new Date(System.currentTimeMillis());
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("dd/mm/yyyy");
+                    textNgaymua.setText("" + timeFormat.format(today.getTime()));
+
                     donHangArrayList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                 }
@@ -79,8 +96,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             buttonChiTiet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(context, DonHangActivity.class);
-                    intent.putExtra("donhang",donHangArrayList.get(getAdapterPosition()));
+                    Intent intent = new Intent(context, DonHangActivity.class);
+                    intent.putExtra("donhang", donHangArrayList.get(getAdapterPosition()));
                     context.startActivity(intent);
                 }
             });
