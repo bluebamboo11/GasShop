@@ -24,7 +24,7 @@ public class ThongKeAdapter extends ArrayAdapter {
     private int ResID;
     private Context context;
     DonHangFirebase donhang;
-    private List<Thongke_Entites> list;
+    private List<DonHangFirebase> list;
 
     public ThongKeAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List objects) {
         super(context, resource, objects);
@@ -46,21 +46,15 @@ public class ThongKeAdapter extends ArrayAdapter {
             viewHolder.TenMH = (TextView) view.findViewById(R.id.txtTenHang);
             viewHolder.Thoigian = (TextView) view.findViewById(R.id.txtThoigian);
             viewHolder.Tien = (TextView) view.findViewById(R.id.txtTien);
-            viewHolder.Ketqua = (TextView) view.findViewById(R.id.txtKQ);
+
             view.setTag(viewHolder);
         } else {
             viewHolder = (ThongKeAdapter.ViewHolder) view.getTag();
         }
 
-        viewHolder.TenMH.setText(donhang.sanpham);
-        viewHolder.Thoigian.setText("" + list.get(position).getThoigian());
-        viewHolder.Tien.setText(donhang.tongtien);
-        if (donhang.KQ == 1) {
-            viewHolder.Ketqua.setText("Đã chuyển");
-        }
-        else {
-            viewHolder.Ketqua.setText("Hủy đơn");
-        }
+        viewHolder.TenMH.setText(list.get(position).sanpham);
+        viewHolder.Thoigian.setText("" + list.get(position).ngaymua);
+        viewHolder.Tien.setText(""+list.get(position).tongtien);
 
         return view;
     }
@@ -69,7 +63,7 @@ public class ThongKeAdapter extends ArrayAdapter {
         TextView TenMH;
         TextView Thoigian;
         TextView Tien;
-        TextView Ketqua;
+
 
     }
 }

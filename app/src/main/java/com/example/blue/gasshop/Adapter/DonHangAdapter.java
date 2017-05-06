@@ -47,7 +47,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.textGia.setText(decimalFormat.format(donHangArrayList.get(position).tongtien) + "");
         //Nang
-        holder.textKQ.setText("" + donHangArrayList.get(position).KQ);
+
 
         holder.textNgaymua.setText("" + donHangArrayList.get(position).ngaymua);
 

@@ -29,7 +29,26 @@
         <activity
             android:name=".Activity.ThongkeActivity"
             android:label="@string/title_activity_thongke"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.DoanhThuActivity"
+            android:label="@string/title_activity_doanh_thu"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.DTNgayActivity"
+            android:label="@string/title_activity_dtngay"
             android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>

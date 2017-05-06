@@ -15,4 +15,14 @@
     <string name="Tenkh"> Tên khách hàng</string>
     <string name="SDT">0974852699</string>
     <string name="Tien">1.000.000</string>
+    <string name="DTNgay">Doanh Thu Trong Ngày</string>
+    <string name="DTThang">Doanh Thu Trong Tháng</string>
+    <string name="DTTong"> Tổng Doanh Thu</string>
+    <string name="KhTOP">Hàng Bán Chạy</string>
+    <string name="KhThanThiet">Khách Hàng Thân Thiết</string>
+    <string name="KhHuy">Khách Hàng Hủy Đơn Nhiều</string>
+    <string name="TongTien">Tổng Tiền:1.000.000 VND</string>
+
+    <string name="title_activity_doanh_thu">DoanhThuActivity</string>
+    <string name="title_activity_dtngay">DTNgayActivity</string>
 </resources>

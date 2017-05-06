@@ -147,15 +147,6 @@
                     android:paddingRight="@dimen/activity_horizontal_margin"
                     android:text="Chi tiet"
                     android:textColor="#20e223" />
-                <TextView
-
-
-                    android:id="@+id/buton_huy"
-                    android:layout_width="80dp"
-                    android:layout_height="30dp"
-                    android:background="@android:color/white"
-                    android:text="Hủy"
-                    android:textColor="#20e223" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
