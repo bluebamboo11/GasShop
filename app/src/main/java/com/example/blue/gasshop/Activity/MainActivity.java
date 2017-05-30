@@ -1,5 +1,6 @@
 package com.example.blue.gasshop.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.blue.gasshop.Adapter.DonHangAdapter;
 import com.example.blue.gasshop.DonHangFirebase;
@@ -79,8 +81,40 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.nav_Thongke) {
+           Intent intent = new Intent(this,ThongkeActivity.class);
+               this.startActivity(intent);
+            return true;
+        }
+        if (id == R.id.nav_DoanhThu) {
+            Intent intent = new Intent(this,DoanhThuActivity.class);
+            this.startActivity(intent);
+            return true;
+        }
+        if (id == R.id.nav_HoTro) {
+
+            return true;
+        }
+        if (id == R.id.nav_Caidat) {
+
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public class ClickActivity implements View.OnClickListener {
+        Class aClass;
+
+        public ClickActivity(Class aClass) {
+            this.aClass = aClass;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, aClass);
+            startActivity(intent);
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -88,7 +122,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -157,9 +190,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-             ArrayList<DonHangFirebase> donHangFirebases= (ArrayList<DonHangFirebase>) savedInstanceState.getSerializable("list");
-        if(donHangFirebases!=null){
-            donHangFirebaseArrayList=donHangFirebases;
+        ArrayList<DonHangFirebase> donHangFirebases = (ArrayList<DonHangFirebase>) savedInstanceState.getSerializable("list");
+        if (donHangFirebases != null) {
+            donHangFirebaseArrayList = donHangFirebases;
             donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
             recyclerView.setAdapter(donHangAdapter);
         }

@@ -52,9 +52,9 @@ public class ThongKeAdapter extends ArrayAdapter {
             viewHolder = (ThongKeAdapter.ViewHolder) view.getTag();
         }
 
-        viewHolder.TenMH.setText(list.get(position).sanpham);
-        viewHolder.Thoigian.setText("" + list.get(position).ngaymua);
-        viewHolder.Tien.setText(""+list.get(position).tongtien);
+        viewHolder.TenMH.setText("Tên Hàng:"+list.get(position).sanpham);
+        viewHolder.Thoigian.setText("Thời Gian:" + list.get(position).ngaymua);
+        viewHolder.Tien.setText("Tổng Tiền:"+list.get(position).tongtien+" VNĐ");
 
         return view;
     }

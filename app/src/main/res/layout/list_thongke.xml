@@ -6,10 +6,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingRight="10dp">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+
+        android:orientation="horizontal">
 
 
         <ImageView
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center|left"
-            android:layout_weight="0.99"
+            android:layout_weight="1"
             android:src="@drawable/ic_list_thongke" />
 
         <LinearLayout
@@ -30,23 +30,34 @@
                 android:id="@+id/txtTenHang"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:gravity="top"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="@string/Tenhang"
                 android:textColor="@android:color/black"
-                android:textSize="12dp"
+                android:textSize="13sp"
+
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFF2F2F2"
+                android:paddingRight="10dp" />
 
             <TextView
                 android:id="@+id/txtThoigian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="@string/Thoigian"
                 android:textColor="@android:color/black"
-                android:textSize="10dp"
-                android:textStyle="bold" />
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFF2F2F2"
+                android:paddingRight="10dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -57,34 +68,24 @@
                     android:id="@+id/txtTien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="@string/Tien"
                     android:textColor="@android:color/black"
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
+                    android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/txtKQ"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/Ketqua"
-                    android:textColor="@android:color/black"
-                    android:textSize="10dp"
-                    android:textStyle="bold" />
             </LinearLayout>
 
 
         </LinearLayout>
 
-        <ImageView
+        <!--<ImageView-->
 
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center|left"
-            android:layout_weight="1"
-            android:src="@drawable/ic_true_icon" />
+            <!--android:id="@+id/imageView2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="left"-->
+            <!--android:layout_weight="2"-->
+            <!--android:src="@drawable/ic_true_icon" />-->
 
 
     </LinearLayout>

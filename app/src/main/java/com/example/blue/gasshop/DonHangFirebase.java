@@ -31,4 +31,76 @@ public class DonHangFirebase  implements Serializable{
         this.y = y;
         this.ngaymua = ngaymua;
     }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
+    public int getTongtien() {
+        return tongtien;
+    }
+
+    public void setTongtien(int tongtien) {
+        this.tongtien = tongtien;
+    }
+
+    public String getSanpham() {
+        return sanpham;
+    }
+
+    public void setSanpham(String sanpham) {
+        this.sanpham = sanpham;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getIdSanPham() {
+        return idSanPham;
+    }
+
+    public void setIdSanPham(String idSanPham) {
+        this.idSanPham = idSanPham;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public String getNgaymua() {
+        return ngaymua;
+    }
+
+    public void setNgaymua(String ngaymua) {
+        this.ngaymua = ngaymua;
+    }
 }

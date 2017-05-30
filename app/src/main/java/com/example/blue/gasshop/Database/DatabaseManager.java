@@ -1,5 +1,6 @@
 package com.example.blue.gasshop.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,6 +22,7 @@ public class DatabaseManager {
         datasource = Database.initDatabase(context, Database.DATA_NAME);
     }
 
+
     // Lấy toàn bộ dữ liệu tù bảng trong CSDL
     public List<DonHangFirebase> getAllData(String tab_name) {
         List<DonHangFirebase> list_donHang = new ArrayList<>();
@@ -33,6 +35,22 @@ public class DatabaseManager {
             cursor.moveToNext();
         }
         return list_donHang;
+    }
+    //
+
+    public void insert(DonHangFirebase donHangFirebase) {
+///        ContentValues contentValues = new ContentValues();
+//        contentValues.put("Ten_KH", donHangFirebase.getTen());
+//        contentValues.put("Ten_SP", donHangFirebase.getSanpham());
+//        contentValues.put("Ngay_Mua", donHangFirebase.getNgaymua());
+//        contentValues.put("Dia_Chi", donHangFirebase.getDiachi());
+//        contentValues.put("SDT", donHangFirebase.getSdt());
+//        contentValues.put("X", donHangFirebase.getX());
+//        contentValues.put("Y", donHangFirebase.getY());
+//        contentValues.put("ID_SP", donHangFirebase.getIdSanPham());
+//        contentValues.put("Tong_tien", donHangFirebase.getTongtien());
+//        datasource.insert(Database.TAB_THONGKE, null, contentValues);
+
     }
 
     public DonHangFirebase getData(Cursor cursor) {

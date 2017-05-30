@@ -25,4 +25,6 @@
 
     <string name="title_activity_doanh_thu">DoanhThuActivity</string>
     <string name="title_activity_dtngay">DTNgayActivity</string>
+    <string name="title_activity_dttong">DTTongActivity</string>
+    <string name="title_activity_hang_hot">HangHotActivity</string>
 </resources>

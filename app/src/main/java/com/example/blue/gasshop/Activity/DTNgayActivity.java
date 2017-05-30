@@ -42,7 +42,7 @@ public class DTNgayActivity extends AppCompatActivity {
         Date today = new Date(System.currentTimeMillis());
         SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        String PreDay = timeFormat.format(today.getTime( ) );
+        String PreDay = timeFormat.format(today.getTime());
         String NowDay = timeFormat.format(today.getTime());
         theDates.add(PreDay);
         theDates.add(NowDay);
