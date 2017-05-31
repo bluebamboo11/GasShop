@@ -30,6 +30,7 @@ public class DTNgayActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         txtTongtien = (TextView) findViewById(R.id.txtTongtien);
 //        lvDTNgay = (ListView) findViewById(R.id.lvDTNgay);
+
         barChart = (BarChart) findViewById(R.id.barDTNgay);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(5000000f, 0));
