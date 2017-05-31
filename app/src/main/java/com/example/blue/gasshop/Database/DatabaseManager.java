@@ -39,17 +39,17 @@ public class DatabaseManager {
     //
 
     public void insert(DonHangFirebase donHangFirebase) {
-///        ContentValues contentValues = new ContentValues();
-//        contentValues.put("Ten_KH", donHangFirebase.getTen());
-//        contentValues.put("Ten_SP", donHangFirebase.getSanpham());
-//        contentValues.put("Ngay_Mua", donHangFirebase.getNgaymua());
-//        contentValues.put("Dia_Chi", donHangFirebase.getDiachi());
-//        contentValues.put("SDT", donHangFirebase.getSdt());
-//        contentValues.put("X", donHangFirebase.getX());
-//        contentValues.put("Y", donHangFirebase.getY());
-//        contentValues.put("ID_SP", donHangFirebase.getIdSanPham());
-//        contentValues.put("Tong_tien", donHangFirebase.getTongtien());
-//        datasource.insert(Database.TAB_THONGKE, null, contentValues);
+      ContentValues contentValues = new ContentValues();
+        contentValues.put("Ten_KH", donHangFirebase.getTen());
+        contentValues.put("Ten_SP", donHangFirebase.getSanpham());
+        contentValues.put("Ngay_mua", donHangFirebase.getNgaymua());
+        contentValues.put("Dia_Chi", donHangFirebase.getDiachi());
+        contentValues.put("SDT", donHangFirebase.getSdt());
+        contentValues.put("X", donHangFirebase.getX());
+        contentValues.put("Y", donHangFirebase.getY());
+        contentValues.put("ID_SP", donHangFirebase.getIdSanPham());
+        contentValues.put("Tong_tien", donHangFirebase.getTongtien());
+        datasource.insert(Database.TAB_THONGKE, null, contentValues);
 
     }
 

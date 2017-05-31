@@ -1,28 +1,21 @@
 package com.example.blue.gasshop.Adapter;
 
-import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.blue.gasshop.Activity.DonHangActivity;
-import com.example.blue.gasshop.Database.Database;
 import com.example.blue.gasshop.Database.DatabaseManager;
 import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
 
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by blue on 24/04/2017.
@@ -87,29 +80,13 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             textSDT = (TextView) itemView.findViewById(R.id.text_sdt);
             textDiaChi = (TextView) itemView.findViewById(R.id.text_diachi);
             textSanPham = (TextView) itemView.findViewById(R.id.text_ds_sanPham);
-
             buttonXong = (TextView) itemView.findViewById(R.id.buton_xong);
             buttonChiTiet = (TextView) itemView.findViewById(R.id.buton_chitiet);
-
             buttonXong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-//                ContentValues contentValues = new ContentValues();
-//                    contentValues.put("Ten_KH",""+textName.getText());
-//                    contentValues.put("Ten_SP",""+textSanPham.getText());
-//                    contentValues.put("Ngay_Mua","");
-//                    contentValues.put("Dia_Chi",""+textDiaChi.getText());
-//                    contentValues.put("SDT",""+textSDT.getText());
-//                    contentValues.put("X", "");
-//                    contentValues.put("Y", "" );
-//                    contentValues.put("ID_SP","" );
-//                    contentValues.put("Tong_tien", ""+textGia.getText());
-
-
-//                    Toast.makeText(context,""+donHangArrayList+","+textSDT.getText(),Toast.LENGTH_LONG).show();
-//
-//                    datasource.insert(Database.TAB_THONGKE, null, contentValues);
+            DatabaseManager databaseManager=new DatabaseManager(context);
+                    databaseManager.insert(donHangFirebase);
                     donHangArrayList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                 }
