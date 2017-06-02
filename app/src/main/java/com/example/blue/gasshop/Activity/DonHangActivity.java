@@ -2,7 +2,6 @@ package com.example.blue.gasshop.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,7 +120,7 @@ public class DonHangActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         };
-        Log.e("sanpham",sanpham[0]);
+
         databaseReference.child("SanPham").child("bepgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
         databaseReference.child("SanPham").child("binhgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
         databaseReference.child("SanPham").child("linhkien").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);

@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity
                 SimpleDateFormat dateFormatThang = new SimpleDateFormat("MM-yyyy", Locale.getDefault());
                 donHangFirebase.setNgaymua(dateFormat.format(c));
                 donHangFirebase.setThang(dateFormatThang.format(c));
-                databaseReferenceDonHang.child(dataSnapshot.getKey()).removeValue();
+               donHangFirebase.idDonHang=dataSnapshot.getKey();
                 donHangFirebaseArrayList.add(donHangFirebase);
                 donHangAdapter.notifyDataSetChanged();
             }
@@ -196,14 +196,14 @@ public class MainActivity extends AppCompatActivity
         super.onSaveInstanceState(outState);
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        ArrayList<DonHangFirebase> donHangFirebases = (ArrayList<DonHangFirebase>) savedInstanceState.getSerializable("list");
-        if (donHangFirebases != null) {
-            donHangFirebaseArrayList = donHangFirebases;
-            donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
-            recyclerView.setAdapter(donHangAdapter);
-        }
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        ArrayList<DonHangFirebase> donHangFirebases = (ArrayList<DonHangFirebase>) savedInstanceState.getSerializable("list");
+//        if (donHangFirebases != null) {
+//            donHangFirebaseArrayList = donHangFirebases;
+//            donHangAdapter = new DonHangAdapter(donHangFirebaseArrayList, this);
+//            recyclerView.setAdapter(donHangAdapter);
+//        }
+//    }
 }

@@ -22,7 +22,7 @@ import java.util.List;
 public class ThongKeAdapter extends ArrayAdapter {
     private int ResID;
     private Context context;
-    DonHangFirebase donhang;
+
     private List<DonHangFirebase> list;
 
     public ThongKeAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List objects) {
@@ -36,7 +36,7 @@ public class ThongKeAdapter extends ArrayAdapter {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         ThongKeAdapter.ViewHolder viewHolder = new ThongKeAdapter.ViewHolder();
         if (view == null) {

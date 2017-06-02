@@ -1,8 +1,10 @@
 package com.example.blue.gasshop.Adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,7 +79,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         TextView buttonXong;
         TextView buttonChiTiet;
         TextView textGia;
-
+TextView buttonHuy;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -88,6 +90,7 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
             textSanPham = (TextView) itemView.findViewById(R.id.text_ds_sanPham);
             buttonXong = (TextView) itemView.findViewById(R.id.buton_xong);
             buttonChiTiet = (TextView) itemView.findViewById(R.id.buton_chitiet);
+            buttonHuy=(TextView) itemView.findViewById(R.id.buton_huy);
             buttonXong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,6 +100,8 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
                     donHangArrayList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                     String[] sanPhams = donHangFirebase.idSanPham.split(",");
+                   DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                    databaseReference.child("HaNoi/HaDong/LaKhe").child(donHangFirebase.idDonHang).removeValue();
                     for (String s : sanPhams) {
                        loadData(s);
                     }
@@ -108,6 +113,12 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
                     Intent intent = new Intent(context, DonHangActivity.class);
                     intent.putExtra("donhang", donHangArrayList.get(getAdapterPosition()));
                     context.startActivity(intent);
+                }
+            });
+            buttonHuy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDialog(getAdapterPosition());
                 }
             });
         }
@@ -136,5 +147,31 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
         databaseReference.child("SanPham").child("binhgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
         databaseReference.child("SanPham").child("linhkien").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
 
+    }
+    private void openDialog( final int stt) {
+        AlertDialog.Builder aBuilder = new AlertDialog.Builder(context);
+        aBuilder.setTitle("Hủy đơn hàng");
+        aBuilder.setMessage("Bạn chắc chắn muốn hủy đơn hàng này");
+        aBuilder.setNegativeButton("Hủy ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                donHangFirebase=donHangArrayList.get(stt);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                databaseReference.child("HaNoi/HaDong/LaKhe").child(donHangFirebase.idDonHang).removeValue();
+                donHangArrayList.remove(stt);
+                notifyItemRemoved(stt);
+
+            }
+        });
+
+        aBuilder.setPositiveButton("Không hủy ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+
+            }
+        });
+        AlertDialog alertDialog = aBuilder.create();
+        alertDialog.show();
     }
 }

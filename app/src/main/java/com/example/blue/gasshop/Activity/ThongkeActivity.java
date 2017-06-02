@@ -1,9 +1,12 @@
 package com.example.blue.gasshop.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.blue.gasshop.Adapter.ThongKeAdapter;
@@ -44,7 +47,14 @@ public class ThongkeActivity extends AppCompatActivity {
         donHangFirebaseArrayList = manager.getAllData(Database.TAB_THONGKE);
         thongKeAdapter = new ThongKeAdapter(this, R.layout.list_thongke, donHangFirebaseArrayList);
         listView.setAdapter(thongKeAdapter);
-
+listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent=new Intent(ThongkeActivity.this, DonHangActivity.class);
+        intent.putExtra("donhang",donHangFirebaseArrayList.get(position));
+        startActivity(intent);
+    }
+});
     }
 
 

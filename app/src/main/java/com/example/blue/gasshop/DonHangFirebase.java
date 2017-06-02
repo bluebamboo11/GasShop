@@ -17,6 +17,7 @@ public class DonHangFirebase  implements Serializable{
     public double y;
     public String ngaymua;
     public String thang;
+    public String idDonHang;
 
     public String getThang() {
         return thang;

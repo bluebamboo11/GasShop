@@ -28,12 +28,12 @@ public class DatabaseManager {
     public List<DonHangFirebase> getAllData(String tab_name) {
         List<DonHangFirebase> list_donHang = new ArrayList<>();
         Cursor cursor = datasource.rawQuery("SELECT * FROM " + tab_name + "", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
+        cursor.moveToLast();
+        for(int i=0;i<cursor.getCount();i++){
 
             DonHangFirebase donHangFirebase = getData(cursor);
             list_donHang.add(donHangFirebase);
-            cursor.moveToNext();
+            cursor.moveToPosition(cursor.getPosition()-1);
         }
         return list_donHang;
     }
@@ -55,12 +55,11 @@ public class DatabaseManager {
     public List<DonHangFirebase> getAllDataThang(String tab_name, String thang) {
         List<DonHangFirebase> list_donHang = new ArrayList<>();
         Cursor cursor = datasource.rawQuery("SELECT * FROM " + tab_name + " WHERE thang = ? ", new String[]{thang});
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
+        while (cursor.moveToNext()){
 
             DonHangFirebase donHangFirebase = getData(cursor);
             list_donHang.add(donHangFirebase);
-            cursor.moveToNext();
+
         }
         return list_donHang;
     }
