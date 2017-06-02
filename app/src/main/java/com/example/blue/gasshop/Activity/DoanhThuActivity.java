@@ -4,14 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.blue.gasshop.Database.Database;
+import com.example.blue.gasshop.Database.DatabaseManager;
+import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
+
+import java.text.DecimalFormat;
+import java.util.List;
 
 public class DoanhThuActivity extends AppCompatActivity {
 
-    Button DTThang, DTNgay, DTTong, KHTop, KHHuy, KHTT;
+    Button DTThang, DTNgay, DTTong, KHTop, KHHuy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +27,7 @@ public class DoanhThuActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         getSupportActionBar().setTitle("Doanh Thu");
         getSupportActionBar().setElevation(0f);
         setSupportActionBar(toolbar);
@@ -29,10 +36,10 @@ public class DoanhThuActivity extends AppCompatActivity {
         DTThang = (Button) findViewById(R.id.btDTThang);
         DTTong = (Button) findViewById(R.id.btDTTong);
         KHTop = (Button) findViewById(R.id.btKhTop);
-        KHTT = (Button) findViewById(R.id.btKHTT);
+
         KHHuy = (Button) findViewById(R.id.btKHhuy);
-
-
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###");
+        DTTong.setText("Tổng Doanh Thu: " + decimalFormat.format(getDoanhThu()) + " VND");
         DTNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,27 +50,18 @@ public class DoanhThuActivity extends AppCompatActivity {
         DTThang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(DoanhThuActivity.this, DTThang.class);
+                startActivity(intent);
             }
         });
-        DTTong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         KHTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(DoanhThuActivity.this, HangBanChayActivity.class));
             }
         });
-        KHTT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
         KHHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,5 +71,23 @@ public class DoanhThuActivity extends AppCompatActivity {
         });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    private Long getDoanhThu() {
+        Long tien = 0l;
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        List<DonHangFirebase> donHangFirebaseList = databaseManager.getAllData(Database.TAB_THONGKE);
+        for (DonHangFirebase donHangFirebase : donHangFirebaseList) {
+            tien = tien + donHangFirebase.getTongtien();
+        }
+        return tien;
+    }
 }

@@ -13,6 +13,12 @@ import com.example.blue.gasshop.Activity.DonHangActivity;
 import com.example.blue.gasshop.Database.DatabaseManager;
 import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
+import com.example.blue.gasshop.SanPhamFirebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -86,9 +92,14 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
             DatabaseManager databaseManager=new DatabaseManager(context);
+                    donHangFirebase=donHangArrayList.get(getAdapterPosition());
                     databaseManager.insert(donHangFirebase);
                     donHangArrayList.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
+                    String[] sanPhams = donHangFirebase.idSanPham.split(",");
+                    for (String s : sanPhams) {
+                       loadData(s);
+                    }
                 }
             });
             buttonChiTiet.setOnClickListener(new View.OnClickListener() {
@@ -103,5 +114,27 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHold
 
     }
 
+    private void loadData(String s) {
+        final String[] sanpham = s.split(":");
+        DatabaseReference  databaseReference = FirebaseDatabase.getInstance().getReference();
+        ValueEventListener valueEventListener=new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue()!=null){
+                    SanPhamFirebase sanPhamFirebase = dataSnapshot.getValue(SanPhamFirebase.class);
+                    sanPhamFirebase.soluong = Integer.parseInt(sanpham[1]);
+                   DatabaseManager databaseManager=new DatabaseManager(context);
+                    databaseManager.insertSanPham(sanPhamFirebase);
+                }}
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        databaseReference.child("SanPham").child("bepgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+        databaseReference.child("SanPham").child("binhgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+        databaseReference.child("SanPham").child("linhkien").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+
+    }
 }

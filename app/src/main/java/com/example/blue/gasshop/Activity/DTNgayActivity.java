@@ -3,6 +3,7 @@ package com.example.blue.gasshop.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.blue.gasshop.Database.Database;
@@ -34,9 +35,9 @@ public class DTNgayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dtngay);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        txtTongtien = (TextView) findViewById(R.id.txtTongtien);
-//        lvDTNgay = (ListView) findViewById(R.id.lvDTNgay);
 
+//        lvDTNgay = (ListView) findViewById(R.id.lvDTNgay);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Calendar c = Calendar.getInstance();
         Date d=c.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
@@ -47,8 +48,8 @@ public class DTNgayActivity extends AppCompatActivity {
 
         barChart = (BarChart) findViewById(R.id.barDTNgay);
         ArrayList<BarEntry> barEntries = new ArrayList<>();
-        barEntries.add(new BarEntry(getDoanhThu(homnay), 0));
-        barEntries.add(new BarEntry(getDoanhThu(homqua), 1));
+        barEntries.add(new BarEntry(getDoanhThu(homqua), 0));
+        barEntries.add(new BarEntry(getDoanhThu(homnay), 1));
         BarDataSet barDataSet = new BarDataSet(barEntries, "Dates");
 
         barDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
@@ -66,7 +67,15 @@ public class DTNgayActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private Long getDoanhThu(String date) {
         Long tien = 0l;
         DatabaseManager databaseManager = new DatabaseManager(this);

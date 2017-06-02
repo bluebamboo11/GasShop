@@ -56,7 +56,7 @@ public class SanPhamAdapter extends BaseAdapter {
         ImageView imgSanpham=(ImageView) itemView.findViewById(R.id.img_sanPham);
         textName.setText(sanPhamArrayList.get(position).ten);
         textTien.setText(sanPhamArrayList.get(position).gia+"");
-        textSoLuong.setText(sanPhamArrayList.get(position).soluong);
+        textSoLuong.setText(sanPhamArrayList.get(position).soluong+"");
         StorageReference storage = FirebaseStorage.getInstance().getReferenceFromUrl(sanPhamArrayList.get(position).anh);
         Glide.with(context)
                 .using(new FirebaseImageLoader())

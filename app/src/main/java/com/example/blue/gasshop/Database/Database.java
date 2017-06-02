@@ -15,15 +15,8 @@ import java.io.InputStream;
 public class Database {
     public  static final   String DATA_NAME="db_GasShop.sqlite";
     public  static final   String TAB_THONGKE="tbl_Thongke";
-    public  static final   String Ten_KH="Ten_KH";
-    public  static final   String Ten_SP="Ten_SP";
-    public  static final   String Ngay_Mua="Ngay_Mua";
-    public  static final   String Dia_Chi="Dia_Chi";
-    public  static final   String  SDT="SDT";
-    public  static final   String  X="X";
-    public  static final   String  Y="Y";
-    public  static final   String ID_SP="ID_SP";
-    public  static final   String Tong_tien="Tong_tien";
+
+    public  static final   String TAB_SANPHAM="sanpham";
 
 
     // tạo một SQLiteDatabase lấy dữ liệu từ file assets

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
-import com.example.blue.gasshop.Thongke_Entites;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class ThongKeAdapter extends ArrayAdapter {
             viewHolder = (ThongKeAdapter.ViewHolder) view.getTag();
         }
 
-        viewHolder.TenMH.setText("Tên Hàng:"+list.get(position).sanpham);
+        viewHolder.TenMH.setText("Tên Hàng:\n"+list.get(position).sanpham);
         viewHolder.Thoigian.setText("Thời Gian:" + list.get(position).ngaymua);
         viewHolder.Tien.setText("Tổng Tiền:"+list.get(position).tongtien+" VNĐ");
 

@@ -2,6 +2,8 @@ package com.example.blue.gasshop.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -28,7 +30,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DonHangActivity extends AppCompatActivity implements OnMapReadyCallback {
-    static final LatLng HO_HOAN_KIEM = new LatLng(21.028933, 105.852107);
+
     private LatLng diachi;
     private DatabaseReference databaseReference;
     private ArrayList<SanPhamFirebase> sanPhamFirebaseArrayList;
@@ -51,6 +53,8 @@ public class DonHangActivity extends AppCompatActivity implements OnMapReadyCall
         sanPhamAdapter = new SanPhamAdapter(sanPhamFirebaseArrayList, this);
         listView.setAdapter(sanPhamAdapter);
         setListViewHeightBasedOnChildren(listView);
+        getSupportActionBar().setTitle("Đơn Hàng");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -101,21 +105,36 @@ public class DonHangActivity extends AppCompatActivity implements OnMapReadyCall
     private void loadData(String s) {
         final String[] sanpham = s.split(":");
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("SanPham").child("bepgas").child(sanpham[0]).addListenerForSingleValueEvent(new ValueEventListener() {
+        ValueEventListener valueEventListener=new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+              if(dataSnapshot.getValue()!=null){
                 SanPhamFirebase sanPhamFirebase = dataSnapshot.getValue(SanPhamFirebase.class);
-                sanPhamFirebase.soluong = sanpham[1];
+                sanPhamFirebase.soluong = Integer.parseInt(sanpham[1]);
                 sanPhamFirebaseArrayList.add(sanPhamFirebase);
                 sanPhamAdapter.notifyDataSetChanged();
                 setListViewHeightBasedOnChildren(listView);
-            }
+            }}
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+        Log.e("sanpham",sanpham[0]);
+        databaseReference.child("SanPham").child("bepgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+        databaseReference.child("SanPham").child("binhgas").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+        databaseReference.child("SanPham").child("linhkien").child(sanpham[0]).addListenerForSingleValueEvent(valueEventListener);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

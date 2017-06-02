@@ -1,10 +1,9 @@
 package com.example.blue.gasshop.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.example.blue.gasshop.Adapter.ThongKeAdapter;
@@ -32,7 +31,7 @@ public class ThongkeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
+
         getSupportActionBar().setTitle("Thống Kế");
         getSupportActionBar().setElevation(0f);
 
@@ -49,18 +48,15 @@ public class ThongkeActivity extends AppCompatActivity {
     }
 
 
-//    public void initData() {
-//        DonHangFirebase donHangFirebase = (DonHangFirebase) getIntent().getSerializableExtra("donhang");
-//        TextView txtTenHang = (TextView) findViewById(R.id.txtTenHang);
-//        txtTenHang.setText(donHangFirebase.sanpham);
-//        TextView txtTongtien = (TextView) findViewById(R.id.txtTien);
-//        txtTongtien.setText(donHangFirebase.tongtien);
-//        TextView txtThoigian = (TextView) findViewById(R.id.txtThoigian);
-//        txtThoigian.setText("" + donHangFirebase.ngaymua);
-//        TextView txtKQ = (TextView) findViewById(R.id.txtKQ);
-//        //        String[] sanPhams = donHangFirebase.idSanPham.split(",");
-//
-//    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

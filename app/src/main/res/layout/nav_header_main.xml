@@ -17,7 +17,7 @@
         android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="19dp"
         android:text="Gas Shop"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

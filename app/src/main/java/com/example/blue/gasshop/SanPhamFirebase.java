@@ -10,11 +10,11 @@ public class SanPhamFirebase implements Serializable {
     public String id;
     public String anh;
     public String ten;
-    public float gia;
+    public int gia;
     public String thongtin;
     public String thongso;
     public String baohanh;
-    public String soluong;
+    public int soluong;
 
     public SanPhamFirebase() {
     }
