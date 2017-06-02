@@ -38,7 +38,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ten: "
+                        android:text="Tên : "
                         android:textStyle="bold" />
 
                     <TextView
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="So luong: "
+                        android:text="Số lượng : "
                         android:textStyle="bold" />
 
                     <TextView
@@ -72,7 +72,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tien: "
+                        android:text="Gía: "
                         android:textStyle="bold" />
 
                     <TextView

@@ -24,7 +24,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ten: "
+                    android:text="Tên : "
                     android:textStyle="bold" />
 
                 <TextView
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dia Chi: "
+                    android:text="Địa chỉ: "
                     android:textStyle="bold" />
 
                 <TextView
@@ -79,7 +79,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="San Pham: "
+                    android:text="Sản phẩm: "
                     android:textStyle="bold" />
 
                 <TextView
@@ -99,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tien: "
+                    android:text="Tiền: "
                     android:textStyle="bold" />
 
                 <TextView
@@ -144,7 +144,7 @@
                     android:layout_height="30dp"
                     android:background="@android:color/white"
                     android:paddingRight="@dimen/activity_horizontal_margin"
-                    android:text="Chi tiet"
+                    android:text="Chi tiết"
                     android:textColor="#20e223" />
 
                 <TextView

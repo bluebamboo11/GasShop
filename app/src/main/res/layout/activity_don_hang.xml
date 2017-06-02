@@ -31,7 +31,7 @@ n
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ten: "
+                        android:text="Tên: "
                         android:textStyle="bold" />
 
                     <TextView
@@ -67,7 +67,7 @@ n
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dia Chi: "
+                        android:text="Địa Chỉ: "
                         android:textStyle="bold" />
 
                     <TextView
@@ -86,7 +86,7 @@ n
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tien: "
+                        android:text="Tiền: "
                         android:textStyle="bold" />
 
                     <TextView
@@ -118,7 +118,7 @@ n
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Danh  sach san pham" />
+            android:text="Danh sách sản phẩm " />
 
         <ListView
             android:id="@+id/listView_sanPham"
