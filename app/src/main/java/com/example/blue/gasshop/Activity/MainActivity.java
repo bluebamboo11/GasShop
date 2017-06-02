@@ -23,7 +23,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,27 +82,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if (id == R.id.nav_Thongke) {
-           Intent intent = new Intent(this,ThongkeActivity.class);
-               this.startActivity(intent);
-            return true;
-        }
-        if (id == R.id.nav_DoanhThu) {
-            Intent intent = new Intent(this,DoanhThuActivity.class);
-            this.startActivity(intent);
-            return true;
-        }
-        if (id == R.id.nav_HoTro) {
 
-            return true;
-        }
-        if (id == R.id.nav_Caidat) {
-
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -122,7 +106,27 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.nav_Thongke) {
+            Intent intent = new Intent(this,ThongkeActivity.class);
+            this.startActivity(intent);
+            return true;
+        }
+        if (id == R.id.nav_DoanhThu) {
+            Intent intent = new Intent(this,DoanhThuActivity.class);
+            this.startActivity(intent);
+            return true;
+        }
+        if (id == R.id.nav_HoTro) {
 
+            return true;
+        }
+        if (id == R.id.nav_Caidat) {
+
+            return true;
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -136,6 +140,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 DonHangFirebase donHangFirebase = dataSnapshot.getValue(DonHangFirebase.class);
+                Date c = Calendar.getInstance().getTime();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+                SimpleDateFormat dateFormatThang = new SimpleDateFormat("MM-yyyy", Locale.getDefault());
+                donHangFirebase.setNgaymua(dateFormat.format(c));
+                donHangFirebase.setThang(dateFormatThang.format(c));
                 databaseReferenceDonHang.child(dataSnapshot.getKey()).removeValue();
                 donHangFirebaseArrayList.add(donHangFirebase);
                 donHangAdapter.notifyDataSetChanged();

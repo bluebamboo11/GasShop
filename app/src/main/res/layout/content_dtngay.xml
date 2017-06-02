@@ -9,16 +9,7 @@
     tools:context="com.example.blue.gasshop.Activity.DTNgayActivity"
     tools:showIn="@layout/activity_dtngay">
 
-    <TextView
-        android:id="@+id/txtTongtien"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/TongTien"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+
 
     <!--<ListView-->
     <!--android:id="@+id/lvDTNgay"-->

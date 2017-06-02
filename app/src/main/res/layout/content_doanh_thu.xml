@@ -33,19 +33,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow
-                android:background="#FFF"
+            <android.support.v7.widget.CardView
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="10dp">
-
                 <Button
-                    android:layout_height="wrap_content"
+
                     android:id="@+id/btDTNgay"
-                    android:layout_weight="1"
-                    android:background="@drawable/duongvien_goctron"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:background="@color/cardview_light_background"
                     android:text="@string/DTNgay" />
 
-
-            </TableRow>
+            </android.support.v7.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
@@ -53,19 +55,21 @@
                 android:background="#FFF2F2F2"
                 android:paddingRight="10dp" />
 
-            <TableRow
 
-                android:background="#FFF"
+            <android.support.v7.widget.CardView
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="10dp">
-
                 <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:id="@+id/btDTThang"
-                    android:background="@drawable/duongvien_goctron"
+                    android:background="@color/cardview_light_background"
                     android:text="@string/DTThang" />
 
-            </TableRow>
+            </android.support.v7.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
@@ -73,21 +77,22 @@
                 android:background="#FFF2F2F2"
                 android:paddingRight="10dp" />
 
-            <TableRow
 
-
-                android:background="#FFF"
+            <android.support.v7.widget.CardView
+                android:layout_margin="5dp"
+                app:cardCornerRadius="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:padding="10dp">
 
                 <Button
-
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:id="@+id/btDTTong"
-                    android:background="@drawable/duongvien_goctron"
+                    android:background="@color/cardview_light_background"
                     android:text="@string/DTTong" />
 
-            </TableRow>
+            </android.support.v7.widget.CardView>
 
             <View
                 android:layout_width="match_parent"
@@ -116,22 +121,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow
-                    android:background="#FFF"
+                <android.support.v7.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:padding="10dp">
 
                     <Button
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/btKhTop"
-                        android:background="@drawable/duongvien_goctron"
+                        android:background="@color/cardview_light_background"
                         android:text="@string/KhTOP" />
 
 
-                </TableRow>
+                </android.support.v7.widget.CardView>
 
                 <View
                     android:layout_width="match_parent"
@@ -139,19 +144,21 @@
                     android:background="#FFF2F2F2"
                     android:paddingRight="10dp" />
 
-                <TableRow
-
-                    android:background="#FFF"
-
+                <android.support.v7.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:padding="10dp">
 
                     <Button
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/btKHTT"
-                        android:background="@drawable/duongvien_goctron"
+                        android:background="@color/cardview_light_background"
                         android:text="@string/KhThanThiet" />
 
-                </TableRow>
+                </android.support.v7.widget.CardView>
 
                 <View
                     android:layout_width="match_parent"
@@ -159,21 +166,24 @@
                     android:background="#FFF2F2F2"
                     android:paddingRight="10dp" />
 
-                <TableRow
 
-
-                    android:background="#FFF"
+                <android.support.v7.widget.CardView
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:padding="10dp">
 
                     <Button
                         android:id="@+id/btKHhuy"
+
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/duongvien_goctron"
+                        android:background="@color/cardview_light_background"
                         android:text="@string/KhHuy" />
 
 
-                </TableRow>
+                </android.support.v7.widget.CardView>
 
                 <View
                     android:layout_width="match_parent"
@@ -182,7 +192,7 @@
                     android:background="#FFF2F2F2"
                     android:paddingRight="10dp" />
 
-            </TableLayout>
+
 
         </LinearLayout>
 

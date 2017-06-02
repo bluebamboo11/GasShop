@@ -25,18 +25,18 @@ public class DoanhThuActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(0f);
         setSupportActionBar(toolbar);
 
-        DTNgay = (Button) findViewById(R.id.btDTThang);
+        DTNgay = (Button) findViewById(R.id.btDTNgay);
         DTThang = (Button) findViewById(R.id.btDTThang);
         DTTong = (Button) findViewById(R.id.btDTTong);
         KHTop = (Button) findViewById(R.id.btKhTop);
         KHTT = (Button) findViewById(R.id.btKHTT);
         KHHuy = (Button) findViewById(R.id.btKHhuy);
-        final Intent intent = new Intent(this, DTNgayActivity.class);
+
 
         DTNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(DoanhThuActivity.this, DTNgayActivity.class);
                 startActivity(intent);
             }
         });

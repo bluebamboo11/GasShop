@@ -1,7 +1,6 @@
 package com.example.blue.gasshop;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by blue on 25/04/2017.
@@ -17,6 +16,16 @@ public class DonHangFirebase  implements Serializable{
     public double x;
     public double y;
     public String ngaymua;
+    public String thang;
+
+    public String getThang() {
+        return thang;
+    }
+
+    public void setThang(String thang) {
+        this.thang = thang;
+    }
+
     public DonHangFirebase() {
     }
 
