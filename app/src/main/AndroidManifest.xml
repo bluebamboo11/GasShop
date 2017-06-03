@@ -60,6 +60,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Activity.DTThang" />
         <activity android:name=".Activity.HangBanChayActivity"></activity>
+        <activity android:name=".Activity.SignInActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

@@ -22,9 +22,26 @@
     <string name="KhThanThiet">Khách Hàng Thân Thiết</string>
     <string name="KhHuy">Khách Hàng Hủy Đơn Nhiều</string>
     <string name="TongTien">Tổng Tiền:1.000.000 VND</string>
-
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
     <string name="title_activity_doanh_thu">DoanhThuActivity</string>
     <string name="title_activity_dtngay">DTNgayActivity</string>
     <string name="title_activity_dttong">DTTongActivity</string>
     <string name="title_activity_hang_hot">HangHotActivity</string>
+    <string name="auth_failed">Quá trình xác thực đã thất bại</string>
+    <string name="loiDaCoEmail">Địa chỉ email đã được sử dụng bởi một tài khoản khác.</string>
+    <string name="loiEmailSai">Địa chỉ email bị định dạng sai.</string>
+    <string name="loipass">Mật khẩu không hợp lệ.</string>
+    <string name="loikhongCoMail">Không có hồ sơ người dùng nào tương ứng với email này.</string>
+    <string name="minpass">Mật khẩu phải có ít nhất 6 ký tự.</string>
+    <string name="doiMatKhau">Quên mật khẩu, thay đổi mật khẩu.</string>
+    <string name="doimatkhau_title">Đặt lại mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="cancel">Hủy</string>
+    <string name="ok">Đồng ý</string>
+    <string name="loading">Đang tải…</string>
+    <string name="Required">Trường bắt buộc</string>
+    <string name="disconect">Không có kết nối internet</string>
+    <string name="nhapmail">Chưa có email nào</string>
+    <string name="doimatkhau">Chọn "Đồng ý", Một email chứa hướng dẫn đặt lại mật khẩu sẽ được gửi đến</string>
 </resources>

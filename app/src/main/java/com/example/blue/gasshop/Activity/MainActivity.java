@@ -17,6 +17,8 @@ import android.view.View;
 import com.example.blue.gasshop.Adapter.DonHangAdapter;
 import com.example.blue.gasshop.DonHangFirebase;
 import com.example.blue.gasshop.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,11 +40,22 @@ public class MainActivity extends AppCompatActivity
     DonHangAdapter donHangAdapter;
     private DatabaseReference databaseReference;
     private ArrayList<DonHangFirebase> donHangFirebaseArrayList;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+        if (mFirebaseUser == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+            return;
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -80,8 +93,11 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
+if(id==R.id.action_settings){
+    mFirebaseAuth.signOut();
+    finish();
+    startActivity(new Intent(this, SignInActivity.class));
+}
 
 
         return super.onOptionsItemSelected(item);
